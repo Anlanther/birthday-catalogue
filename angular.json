@@ -42,6 +42,7 @@
                   "maximumError": "4kb"
                 }
               ],
+              "deleteOutputPath": true,
               "outputHashing": "all"
             },
             "development": {

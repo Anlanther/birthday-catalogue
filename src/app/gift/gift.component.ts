@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, OnDestroy, inject } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
@@ -12,7 +12,7 @@ import { AppFeature, AppStore } from '../state/app.state';
   templateUrl: './gift.component.html',
   styleUrl: './gift.component.scss',
 })
-export class GiftComponent {
+export class GiftComponent implements OnDestroy {
   store = inject(Store<AppStore>);
   accessories: string[] = [];
   lamps: string[] = [];
@@ -38,5 +38,8 @@ export class GiftComponent {
         this.stands = [...appState.stands];
         this.deskAccessories = [...appState.deskAccessories];
       });
+  }
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

@@ -1,0 +1,56 @@
+.catalogue--container {
+  width: 100%;
+  position: relative;
+
+  .image {
+    width: 100%;
+  }
+
+  .btn {
+    background-color: rgb(255, 225, 0);
+    border-color: rgba(255, 255, 0, 0.361);
+    position: absolute;
+    height: 18px;
+    border-radius: 60px;
+  }
+
+  .accessory {
+    top: 30%;
+    left: 23%;
+  }
+
+  .lamp {
+    top: 38%;
+    left: 35%;
+  }
+
+  .chair {
+    top: 72%;
+    left: 22%;
+  }
+
+  .desk {
+    top: 68%;
+    left: 75%;
+  }
+
+  .storage {
+    top: 87%;
+    left: 78%;
+  }
+
+  .foot-rest {
+    top: 93%;
+    left: 58%;
+  }
+
+  .stand {
+    top: 52%;
+    left: 72%;
+  }
+
+  .desk-accessory {
+    top: 62%;
+    left: 50%;
+  }
+}

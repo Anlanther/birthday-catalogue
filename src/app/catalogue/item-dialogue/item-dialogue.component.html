@@ -1,0 +1,32 @@
+<h1 mat-dialog-title>{{ item }}</h1>
+<div mat-dialog-content>
+  <mat-form-field class="example-chip-list">
+    <mat-label>Item Names</mat-label>
+    <mat-chip-grid #chipGrid aria-label="Enter item names">
+      @for (itemName of itemNames; track itemName) {
+      <mat-chip-row
+        (removed)="remove(itemName)"
+        [editable]="true"
+        (edited)="edit(itemName, $event)"
+        [aria-description]="'press enter to edit ' + itemName.name"
+      >
+        {{ itemName.name }}
+        <button matChipRemove [attr.aria-label]="'remove ' + itemName.name">
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip-row>
+      }
+      <input
+        placeholder="New fruit..."
+        [matChipInputFor]="chipGrid"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        [matChipInputAddOnBlur]="addOnBlur"
+        (matChipInputTokenEnd)="add($event)"
+      />
+    </mat-chip-grid>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="save()" cdkFocusInitial>Ok</button>
+</div>

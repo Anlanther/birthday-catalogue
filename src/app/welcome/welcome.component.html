@@ -1,19 +1,9 @@
-<h1>Happy Birthday, Tas!</h1>
-
-<h2>Welcome to your IKEA scavenger hunt!</h2>
-
-<h3>Before we start, just want to make sure it's you:</h3>
-<div class="input-group mb-3">
-  <span class="input-group-text" id="basic-addon1">Email</span>
-  <input
-    type="text"
-    class="form-control"
-    placeholder="Email"
-    aria-label="Email"
-    aria-describedby="basic-addon1"
-    [formControl]="emailForm"
-  />
-  <button type="button" class="btn btn-primary" (click)="sendEmail()">
-    Test
-  </button>
+<div class="container-body">
+  <div class="container-content">
+    <h1>Happy Birthday, Tas!</h1>
+    <h2>Welcome to your IKEA scavenger hunt!</h2>
+    <button class="btn btn-primary" [routerLink]="'/catalogue'">
+      Start The Hunt
+    </button>
+  </div>
 </div>

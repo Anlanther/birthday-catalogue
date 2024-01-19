@@ -22,7 +22,7 @@ import { MatInputModule } from '@angular/material/input';
 import {
   ItemMetadataService,
   VariableName,
-} from '../../service/item-metadata.service';
+} from '../../services/item-metadata.service';
 
 export interface Item {
   name: string;

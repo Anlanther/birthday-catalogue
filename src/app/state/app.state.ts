@@ -3,6 +3,7 @@ import { createFeature } from '@ngrx/store';
 import { createReducer, on } from '@ngrx/store';
 import { AppActions } from './app.actions';
 
+export type AppStore = { [AppFeature.name]: AppState };
 export interface AppState {
   accessory: string | null;
   lamp: string | null;

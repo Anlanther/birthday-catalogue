@@ -5,26 +5,26 @@ import { AppActions } from './app.actions';
 
 export type AppStore = { [AppFeature.name]: AppState };
 export interface AppState {
-  accessory: string[];
-  lamp: string[];
-  chair: string[];
-  desk: string[];
-  storage: string[];
-  footRest: string[];
-  stand: string[];
-  deskAccessory: string[];
+  accessories: string[];
+  lamps: string[];
+  chairs: string[];
+  desks: string[];
+  storages: string[];
+  footRests: string[];
+  stands: string[];
+  deskAccessories: string[];
   selectionComplete: boolean;
 }
 
 export const initialState: AppState = {
-  accessory: [],
-  lamp: [],
-  chair: [],
-  desk: [],
-  storage: [],
-  footRest: [],
-  stand: [],
-  deskAccessory: [],
+  accessories: [],
+  lamps: [],
+  chairs: [],
+  desks: [],
+  storages: [],
+  footRests: [],
+  stands: [],
+  deskAccessories: [],
   selectionComplete: false,
 };
 
@@ -33,65 +33,68 @@ export const appReducer = createReducer<AppState>(
   on(AppActions.setAccessory, (state, action): AppState => {
     return {
       ...state,
-      accessory: action.accessory,
+      accessories: action.accessory,
       selectionComplete: checkIfComplete({
         ...state,
-        accessory: action.accessory,
+        accessories: action.accessory,
       }),
     };
   }),
   on(AppActions.setLamp, (state, action): AppState => {
     return {
       ...state,
-      lamp: action.lamp,
-      selectionComplete: checkIfComplete({ ...state, lamp: action.lamp }),
+      lamps: action.lamp,
+      selectionComplete: checkIfComplete({ ...state, lamps: action.lamp }),
     };
   }),
   on(AppActions.setChair, (state, action): AppState => {
     return {
       ...state,
-      chair: action.chair,
-      selectionComplete: checkIfComplete({ ...state, chair: action.chair }),
+      chairs: action.chair,
+      selectionComplete: checkIfComplete({ ...state, chairs: action.chair }),
     };
   }),
   on(AppActions.setDesk, (state, action): AppState => {
     return {
       ...state,
-      desk: action.desk,
-      selectionComplete: checkIfComplete({ ...state, desk: action.desk }),
+      desks: action.desk,
+      selectionComplete: checkIfComplete({ ...state, desks: action.desk }),
     };
   }),
   on(AppActions.setStorage, (state, action): AppState => {
     return {
       ...state,
-      storage: action.storage,
-      selectionComplete: checkIfComplete({ ...state, storage: action.storage }),
+      storages: action.storage,
+      selectionComplete: checkIfComplete({
+        ...state,
+        storages: action.storage,
+      }),
     };
   }),
   on(AppActions.setFootRest, (state, action): AppState => {
     return {
       ...state,
-      footRest: action.footRest,
+      footRests: action.footRest,
       selectionComplete: checkIfComplete({
         ...state,
-        footRest: action.footRest,
+        footRests: action.footRest,
       }),
     };
   }),
   on(AppActions.setStand, (state, action): AppState => {
     return {
       ...state,
-      stand: action.stand,
-      selectionComplete: checkIfComplete({ ...state, stand: action.stand }),
+      stands: action.stand,
+      selectionComplete: checkIfComplete({ ...state, stands: action.stand }),
     };
   }),
   on(AppActions.setDeskAccessory, (state, action): AppState => {
     return {
       ...state,
-      deskAccessory: action.deskAccessory,
+      deskAccessories: action.deskAccessory,
       selectionComplete: checkIfComplete({
         ...state,
-        deskAccessory: action.deskAccessory,
+        deskAccessories: action.deskAccessory,
       }),
     };
   })

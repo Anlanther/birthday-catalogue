@@ -11,38 +11,45 @@
       alt="catalogue"
     />
     <button
-      class="btn btn-primary btn-sm accessory"
+      class="btn btn-primary btn-sm circle-button accessory"
       (click)="openDialog(accessory)"
     ></button>
     <button
-      class="btn btn-primary btn-sm lamp"
+      class="btn btn-primary btn-sm circle-button lamp"
       (click)="openDialog(lamp)"
     ></button>
     <button
-      class="btn btn-primary btn-sm chair"
+      class="btn btn-primary btn-sm circle-button chair"
       (click)="openDialog(chair)"
     ></button>
     <button
-      class="btn btn-primary btn-sm desk"
+      class="btn btn-primary btn-sm circle-button desk"
       (click)="openDialog(desk)"
     ></button>
     <button
-      class="btn btn-primary btn-sm storage"
+      class="btn btn-primary btn-sm circle-button storage"
       (click)="openDialog(storage)"
     ></button>
     <button
-      class="btn btn-primary btn-sm foot-rest"
+      class="btn btn-primary btn-sm circle-button foot-rest"
       (click)="openDialog(footRest)"
     ></button>
     <button
-      class="btn btn-primary btn-sm stand"
+      class="btn btn-primary btn-sm circle-button stand"
       (click)="openDialog(stand)"
     ></button>
     <button
-      class="btn btn-primary btn-sm desk-accessory"
+      class="btn btn-primary btn-sm circle-button desk-accessory"
       (click)="openDialog(deskAccessory)"
     ></button>
   </div>
+  @if (isComplete$ | async) {
+  <div class="d-grid gap-2">
+    <button class="btn btn-primary col btn-sm" [routerLink]="'/gift'">
+      Finish
+    </button>
+  </div>
+  }
   <img
     class="img-fluid mx-auto d-block"
     src="assets/footer.jpeg"

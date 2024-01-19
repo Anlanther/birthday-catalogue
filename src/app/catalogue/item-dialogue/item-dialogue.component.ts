@@ -86,7 +86,6 @@ export class ItemDialogueComponent {
   }
 
   save() {
-    console.log('item', this.categoryDisplayName, this.items);
     this.dialogRef.close({
       categoryName: this.categoryName,
       items: this.items.map((item) => item.name),

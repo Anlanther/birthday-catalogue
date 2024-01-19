@@ -21,20 +21,20 @@ export class AppEffects {
       ofType(AppActions.openDialogue),
       concatLatestFrom(({ categoryName }) => {
         if (categoryName === CategoryName.ACCESSORY)
-          return this.store.pipe(select(AppFeature.selectAccessory));
-        if (categoryName === CategoryName.CHAIR)
-          return this.store.pipe(select(AppFeature.selectChair));
-        if (categoryName === CategoryName.DESK)
-          return this.store.pipe(select(AppFeature.selectDesk));
-        if (categoryName === CategoryName.DESK_ACCESSORY)
-          return this.store.pipe(select(AppFeature.selectDeskAccessory));
-        if (categoryName === CategoryName.FOOT_REST)
-          return this.store.pipe(select(AppFeature.selectFootRest));
+          return this.store.pipe(select(AppFeature.selectAccessories));
         if (categoryName === CategoryName.LAMP)
-          return this.store.pipe(select(AppFeature.selectLamp));
+          return this.store.pipe(select(AppFeature.selectLamps));
+        if (categoryName === CategoryName.CHAIR)
+          return this.store.pipe(select(AppFeature.selectChairs));
+        if (categoryName === CategoryName.DESK)
+          return this.store.pipe(select(AppFeature.selectDesks));
+        if (categoryName === CategoryName.STORAGE)
+          return this.store.pipe(select(AppFeature.selectStorages));
+        if (categoryName === CategoryName.FOOT_REST)
+          return this.store.pipe(select(AppFeature.selectFootRests));
         if (categoryName === CategoryName.STAND)
-          return this.store.pipe(select(AppFeature.selectStand));
-        else return this.store.pipe(select(AppFeature.selectStorage));
+          return this.store.pipe(select(AppFeature.selectStands));
+        else return this.store.pipe(select(AppFeature.selectDeskAccessories));
       }),
       exhaustMap(([{ categoryName }, items]) => {
         const dialogRef = this.dialogue.open(ItemDialogueComponent, {

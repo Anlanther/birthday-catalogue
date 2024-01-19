@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 export interface CategoryMetadata {
   displayName: string;
   variableName: string;
-  placeholder: string;
   url: string;
 }
 
@@ -27,7 +26,6 @@ export class CategoryMetadataService {
       CategoryName.ACCESSORY,
       {
         displayName: 'Accessory',
-        placeholder: '',
         url: 'https://www.ikea.com.hk/en/products/workspace-accessories',
         variableName: CategoryName.ACCESSORY,
       },
@@ -36,7 +34,6 @@ export class CategoryMetadataService {
       CategoryName.LAMP,
       {
         displayName: 'Lamp',
-        placeholder: '',
         url: 'https://www.ikea.com.hk/en/products/workspace-lighting',
         variableName: CategoryName.LAMP,
       },
@@ -45,7 +42,6 @@ export class CategoryMetadataService {
       CategoryName.CHAIR,
       {
         displayName: 'Chair',
-        placeholder: '',
         url: 'https://www.ikea.com.hk/en/products/work-chairs',
         variableName: CategoryName.CHAIR,
       },
@@ -54,7 +50,6 @@ export class CategoryMetadataService {
       CategoryName.DESK,
       {
         displayName: 'Desk',
-        placeholder: '',
         url: 'https://www.ikea.com.hk/en/products/work-desks',
         variableName: CategoryName.DESK,
       },
@@ -72,7 +67,6 @@ export class CategoryMetadataService {
       CategoryName.FOOT_REST,
       {
         displayName: 'Foot Rest',
-        placeholder: '',
         url: 'https://www.ikea.com.hk/en/search?q=footrest',
         variableName: CategoryName.FOOT_REST,
       },
@@ -91,7 +85,6 @@ export class CategoryMetadataService {
       {
         displayName: 'Desk Accessory',
         variableName: CategoryName.DESK_ACCESSORY,
-        placeholder: '',
         url: 'https://www.ikea.com.hk/en/products/workspace-accessories/desks-accessories',
       },
     ],

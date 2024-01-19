@@ -5,26 +5,26 @@ import { AppActions } from './app.actions';
 
 export type AppStore = { [AppFeature.name]: AppState };
 export interface AppState {
-  accessory: string | null;
-  lamp: string | null;
-  chair: string | null;
-  desk: string | null;
-  storage: string | null;
-  footRest: string | null;
-  stand: string | null;
-  deskAccessory: string | null;
+  accessory: string[];
+  lamp: string[];
+  chair: string[];
+  desk: string[];
+  storage: string[];
+  footRest: string[];
+  stand: string[];
+  deskAccessory: string[];
   selectionComplete: boolean;
 }
 
 export const initialState: AppState = {
-  accessory: null,
-  lamp: null,
-  chair: null,
-  desk: null,
-  storage: null,
-  footRest: null,
-  stand: null,
-  deskAccessory: null,
+  accessory: [],
+  lamp: [],
+  chair: [],
+  desk: [],
+  storage: [],
+  footRest: [],
+  stand: [],
+  deskAccessory: [],
   selectionComplete: false,
 };
 
@@ -34,63 +34,72 @@ export const appReducer = createReducer<AppState>(
     return {
       ...state,
       accessory: action.accessory,
-      selectionComplete: checkIfComplete(state),
+      selectionComplete: checkIfComplete({
+        ...state,
+        accessory: action.accessory,
+      }),
     };
   }),
   on(AppActions.setLamp, (state, action): AppState => {
     return {
       ...state,
       lamp: action.lamp,
-      selectionComplete: checkIfComplete(state),
+      selectionComplete: checkIfComplete({ ...state, lamp: action.lamp }),
     };
   }),
   on(AppActions.setChair, (state, action): AppState => {
     return {
       ...state,
       chair: action.chair,
-      selectionComplete: checkIfComplete(state),
+      selectionComplete: checkIfComplete({ ...state, chair: action.chair }),
     };
   }),
   on(AppActions.setDesk, (state, action): AppState => {
     return {
       ...state,
       desk: action.desk,
-      selectionComplete: checkIfComplete(state),
+      selectionComplete: checkIfComplete({ ...state, desk: action.desk }),
     };
   }),
   on(AppActions.setStorage, (state, action): AppState => {
     return {
       ...state,
       storage: action.storage,
-      selectionComplete: checkIfComplete(state),
+      selectionComplete: checkIfComplete({ ...state, storage: action.storage }),
     };
   }),
   on(AppActions.setFootRest, (state, action): AppState => {
     return {
       ...state,
       footRest: action.footRest,
-      selectionComplete: checkIfComplete(state),
+      selectionComplete: checkIfComplete({
+        ...state,
+        footRest: action.footRest,
+      }),
     };
   }),
   on(AppActions.setStand, (state, action): AppState => {
     return {
       ...state,
       stand: action.stand,
-      selectionComplete: checkIfComplete(state),
+      selectionComplete: checkIfComplete({ ...state, stand: action.stand }),
     };
   }),
   on(AppActions.setDeskAccessory, (state, action): AppState => {
     return {
       ...state,
       deskAccessory: action.deskAccessory,
-      selectionComplete: checkIfComplete(state),
+      selectionComplete: checkIfComplete({
+        ...state,
+        deskAccessory: action.deskAccessory,
+      }),
     };
   })
 );
 
 function checkIfComplete(state: AppState) {
   const { selectionComplete, ...rest } = state;
-  return Object.values(rest).every((item) => item && item !== '');
+  return Object.values(rest).every((item) => item.length > 0);
 }
 
 export const AppFeature = createFeature({

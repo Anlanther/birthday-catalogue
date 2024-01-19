@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ItemMetadataService } from './item-metadata.service';
+import { CategoryMetadataService } from './category-metadata';
 
 describe('ItemNameConverterService', () => {
-  let service: ItemMetadataService;
+  let service: CategoryMetadataService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(ItemMetadataService);
+    service = TestBed.inject(CategoryMetadataService);
   });
 
   it('should be created', () => {

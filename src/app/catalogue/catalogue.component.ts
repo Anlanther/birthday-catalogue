@@ -6,8 +6,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { CategoryName } from '../services/category-metadata';
+import { AppActions } from '../state/app.actions';
 import { AppFeature, AppStore } from '../state/app.state';
-import { ItemDialogueComponent } from './item-dialogue/item-dialogue.component';
 
 @Component({
   selector: 'app-catalogue',
@@ -21,17 +22,36 @@ export class CatalogueComponent {
 
   isComplete$: Observable<boolean>;
 
+  get accessory() {
+    return CategoryName.ACCESSORY;
+  }
+  get lamp() {
+    return CategoryName.LAMP;
+  }
+  get chair() {
+    return CategoryName.CHAIR;
+  }
+  get desk() {
+    return CategoryName.DESK;
+  }
+  get storage() {
+    return CategoryName.STORAGE;
+  }
+  get footRest() {
+    return CategoryName.FOOT_REST;
+  }
+  get stand() {
+    return CategoryName.STAND;
+  }
+  get deskAccessory() {
+    return CategoryName.DESK_ACCESSORY;
+  }
+
   constructor(public dialog: MatDialog) {
     this.isComplete$ = this.store.select(AppFeature.selectSelectionComplete);
   }
 
-  openDialog(item: string): void {
-    const dialogRef = this.dialog.open(ItemDialogueComponent, {
-      data: { item },
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      //ngrx call
-    });
+  openDialog(item: CategoryName): void {
+    this.store.dispatch(AppActions.openDialogue(item));
   }
 }

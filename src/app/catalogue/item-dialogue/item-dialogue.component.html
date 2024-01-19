@@ -1,23 +1,23 @@
-<h1 mat-dialog-title>{{ item }}</h1>
+<h1 mat-dialog-title>{{ categoryDisplayName }}</h1>
 <div mat-dialog-content>
   <mat-form-field class="example-chip-list">
     <mat-label>Item Names</mat-label>
     <mat-chip-grid #chipGrid aria-label="Enter item names">
-      @for (itemName of itemNames; track itemName) {
+      @for (item of items; track item) {
       <mat-chip-row
-        (removed)="remove(itemName)"
+        (removed)="remove(item)"
         [editable]="true"
-        (edited)="edit(itemName, $event)"
-        [aria-description]="'press enter to edit ' + itemName.name"
+        (edited)="edit(item, $event)"
+        [aria-description]="'press enter to edit ' + item.name"
       >
-        {{ itemName.name }}
-        <button matChipRemove [attr.aria-label]="'remove ' + itemName.name">
+        {{ item.name }}
+        <button matChipRemove [attr.aria-label]="'remove ' + item.name">
           <mat-icon>cancel</mat-icon>
         </button>
       </mat-chip-row>
       }
       <input
-        placeholder="New fruit..."
+        placeholder="LAGKAPTEN/ALEX"
         [matChipInputFor]="chipGrid"
         [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
         [matChipInputAddOnBlur]="addOnBlur"
@@ -27,6 +27,8 @@
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="save()" cdkFocusInitial>Ok</button>
+  <button class="btn" (click)="onNoClick()">Cancel</button>
+  <button class="btn btn-primary" (click)="save()" cdkFocusInitial>
+    Confirm
+  </button>
 </div>

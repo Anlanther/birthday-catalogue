@@ -20,12 +20,18 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import {
-  ItemMetadataService,
-  VariableName,
-} from '../../services/item-metadata.service';
+  CategoryMetadataService,
+  CategoryName,
+} from '../../services/category-metadata';
 
-export interface Item {
+interface Item {
   name: string;
+}
+
+interface DialogueItemMetadata {
+  name: string;
+  displayName: string;
+  items: Item[];
 }
 
 @Component({
@@ -48,10 +54,11 @@ export interface Item {
   styleUrl: './item-dialogue.component.scss',
 })
 export class ItemDialogueComponent {
-  item = '';
-  addOnBlur = true;
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
-  itemNames: Item[] = [];
+  categoryDisplayName = '';
+  categoryName: CategoryName;
+  addOnBlur = true;
+  items: Item[] = [];
   placeholderText = '';
 
   get placeholder() {
@@ -64,14 +71,26 @@ export class ItemDialogueComponent {
 
   constructor(
     public dialogRef: MatDialogRef<ItemDialogueComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { item: VariableName },
-    private itemNameService: ItemMetadataService
+    @Inject(MAT_DIALOG_DATA)
+    public data: { categoryName: CategoryName; items: string[] },
+    private itemNameService: CategoryMetadataService
   ) {
-    this.item = this.itemNameService.getDisplayName(data.item);
+    this.categoryName = data.categoryName;
+    this.categoryDisplayName = this.itemNameService.getDisplayName(
+      data.categoryName
+    );
+    const hasExistingItems = data.items.length > 0;
+    if (hasExistingItems) {
+      this.items = [...data.items.map((i) => ({ name: i }))];
+    }
   }
 
   save() {
-    console.log('item', this.item, this.itemNames);
+    console.log('item', this.categoryDisplayName, this.items);
+    this.dialogRef.close({
+      categoryName: this.categoryName,
+      items: this.items.map((item) => item.name),
+    });
   }
 
   onNoClick(): void {
@@ -84,17 +103,17 @@ export class ItemDialogueComponent {
     const value = (event.value || '').trim();
 
     if (value) {
-      this.itemNames.push({ name: value });
+      this.items.push({ name: value });
     }
 
     event.chipInput!.clear();
   }
 
   remove(itemName: Item): void {
-    const index = this.itemNames.indexOf(itemName);
+    const index = this.items.indexOf(itemName);
 
     if (index >= 0) {
-      this.itemNames.splice(index, 1);
+      this.items.splice(index, 1);
 
       this.announcer.announce(`Removed ${itemName}`);
     }
@@ -108,9 +127,9 @@ export class ItemDialogueComponent {
       return;
     }
 
-    const index = this.itemNames.indexOf(itemName);
+    const index = this.items.indexOf(itemName);
     if (index >= 0) {
-      this.itemNames[index].name = value;
+      this.items[index].name = value;
     }
   }
 }

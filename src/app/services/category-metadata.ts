@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 
-export interface ItemMetadata {
+export interface CategoryMetadata {
   displayName: string;
   variableName: string;
   placeholder: string;
   url: string;
-  imagePath: string;
 }
 
-export enum VariableName {
+export enum CategoryName {
   ACCESSORY = 'accessory',
   LAMP = 'lamp',
   CHAIR = 'chair',
@@ -22,102 +21,94 @@ export enum VariableName {
 @Injectable({
   providedIn: 'root',
 })
-export class ItemMetadataService {
-  ITEM_MAP: Map<VariableName, ItemMetadata> = new Map([
+export class CategoryMetadataService {
+  ITEM_MAP: Map<CategoryName, CategoryMetadata> = new Map([
     [
-      VariableName.ACCESSORY,
+      CategoryName.ACCESSORY,
       {
         displayName: 'Accessory',
         placeholder: '',
         url: 'https://www.ikea.com.hk/en/products/workspace-accessories',
-        variableName: VariableName.ACCESSORY,
-        imagePath: '',
+        variableName: CategoryName.ACCESSORY,
       },
     ],
     [
-      VariableName.LAMP,
+      CategoryName.LAMP,
       {
         displayName: 'Lamp',
         placeholder: '',
         url: 'https://www.ikea.com.hk/en/products/workspace-lighting',
-        variableName: VariableName.LAMP,
-        imagePath: '',
+        variableName: CategoryName.LAMP,
       },
     ],
     [
-      VariableName.CHAIR,
+      CategoryName.CHAIR,
       {
         displayName: 'Chair',
         placeholder: '',
         url: 'https://www.ikea.com.hk/en/products/work-chairs',
-        variableName: VariableName.CHAIR,
-        imagePath: '',
+        variableName: CategoryName.CHAIR,
       },
     ],
     [
-      VariableName.DESK,
+      CategoryName.DESK,
       {
         displayName: 'Desk',
         placeholder: '',
         url: 'https://www.ikea.com.hk/en/products/work-desks',
-        variableName: VariableName.DESK,
-        imagePath: '',
+        variableName: CategoryName.DESK,
       },
     ],
     [
-      VariableName.STORAGE,
+      CategoryName.STORAGE,
       {
         displayName: 'Storage',
         placeholder: 'ALEX',
         url: 'https://www.ikea.com.hk/en/products/office-storage-furniture',
-        variableName: VariableName.STORAGE,
-        imagePath: '',
+        variableName: CategoryName.STORAGE,
       },
     ],
     [
-      VariableName.FOOT_REST,
+      CategoryName.FOOT_REST,
       {
         displayName: 'Foot Rest',
         placeholder: '',
         url: 'https://www.ikea.com.hk/en/search?q=footrest',
-        variableName: VariableName.FOOT_REST,
-        imagePath: '',
+        variableName: CategoryName.FOOT_REST,
       },
     ],
     [
-      VariableName.STAND,
+      CategoryName.STAND,
       {
         displayName: 'Stand',
         placeholder: 'ELLOVEN',
         url: 'https://www.ikea.com.hk/en/search?q=monitor+stand',
-        variableName: VariableName.STAND,
-        imagePath: '',
+        variableName: CategoryName.STAND,
       },
     ],
     [
-      VariableName.DESK_ACCESSORY,
+      CategoryName.DESK_ACCESSORY,
       {
         displayName: 'Desk Accessory',
-        variableName: VariableName.DESK_ACCESSORY,
-        imagePath: '',
+        variableName: CategoryName.DESK_ACCESSORY,
         placeholder: '',
         url: 'https://www.ikea.com.hk/en/products/workspace-accessories/desks-accessories',
       },
     ],
   ]);
 
-  getDisplayName(variableName: VariableName) {
+  getDisplayName(variableName: CategoryName) {
     const metadata = this.ITEM_MAP.get(variableName);
     if (!metadata) {
-      throw new Error(`No variable by name ${variableName}`);
+      throw new Error(`No display name for variable by name ${variableName}`);
     }
     return metadata.displayName;
   }
 
-  getVariableName(variableName: VariableName) {
+  getVariableName(variableName: CategoryName) {
     const metadata = this.ITEM_MAP.get(variableName);
     if (!metadata) {
-      throw new Error(`No variable by name ${variableName}`);
+      throw new Error(`No variable name variable by name ${variableName}`);
     }
     return metadata.variableName;
   }

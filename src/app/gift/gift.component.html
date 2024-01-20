@@ -22,56 +22,72 @@
   </p>
   <div class="list">
     <ul class="list-group">
-      <li class="list-group-item"><strong>Accessories</strong></li>
+      <li class="list-group-item">
+        <strong>{{ accessoryDisplayName }}</strong>
+      </li>
       @for (accessory of accessories; track $index) {
       <li class="list-group-item">{{ accessory }}</li>
       }
     </ul>
 
     <ul class="list-group">
-      <li class="list-group-item"><strong>Lamps</strong></li>
+      <li class="list-group-item">
+        <strong>{{ lampDisplayName }}</strong>
+      </li>
       @for (accessory of lamps; track $index) {
       <li class="list-group-item">{{ accessory }}</li>
       }
     </ul>
 
     <ul class="list-group">
-      <li class="list-group-item"><strong>Chairs</strong></li>
+      <li class="list-group-item">
+        <strong>{{ chairDisplayName }}</strong>
+      </li>
       @for (chair of chairs; track $index) {
       <li class="list-group-item">{{ chair }}</li>
       }
     </ul>
 
     <ul class="list-group">
-      <li class="list-group-item"><strong>Desks</strong></li>
+      <li class="list-group-item">
+        <strong>{{ deskDisplayName }}</strong>
+      </li>
       @for (desk of desks; track $index) {
       <li class="list-group-item">{{ desk }}</li>
       }
     </ul>
 
     <ul class="list-group">
-      <li class="list-group-item"><strong>Storages</strong></li>
+      <li class="list-group-item">
+        <strong>{{ storageDisplayName }}</strong>
+      </li>
       @for (storage of storages; track $index) {
       <li class="list-group-item">{{ storage }}</li>
       }
     </ul>
 
     <ul class="list-group">
-      <li class="list-group-item"><strong>Foot Rests</strong></li>
+      <li class="list-group-item">
+        <strong>{{ footRestDisplayName }}</strong>
+      </li>
       @for (footRest of footRests; track $index) {
       <li class="list-group-item">{{ footRest }}</li>
       }
     </ul>
 
     <ul class="list-group">
-      <li class="list-group-item"><strong>Stands</strong></li>
+      <li class="list-group-item">
+        <strong>{{ standDisplayName }}</strong>
+      </li>
       @for (stand of stands; track $index) {
       <li class="list-group-item">{{ stand }}</li>
       }
     </ul>
 
     <ul class="list-group">
-      <li class="list-group-item"><strong>Desk Accessories</strong></li>
+      <li class="list-group-item">
+        <strong>{{ deskAccessoryDisplayName }}</strong>
+      </li>
       @for (deskAccessory of deskAccessories; track $index) {
       <li class="list-group-item">{{ deskAccessory }}</li>
       }

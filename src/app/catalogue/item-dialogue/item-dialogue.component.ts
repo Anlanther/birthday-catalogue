@@ -54,29 +54,21 @@ interface DialogueItemMetadata {
   styleUrl: './item-dialogue.component.scss',
 })
 export class ItemDialogueComponent {
+  categoryNameService = inject(CategoryMetadataService);
+
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
   categoryDisplayName = '';
   categoryName: CategoryName;
   addOnBlur = true;
   items: Item[] = [];
-  placeholderText = '';
-
-  get placeholder() {
-    return this.placeholderText;
-  }
-
-  set placeholder(item) {
-    this.placeholderText = `e.g. `;
-  }
 
   constructor(
     public dialogRef: MatDialogRef<ItemDialogueComponent>,
     @Inject(MAT_DIALOG_DATA)
-    public data: { categoryName: CategoryName; items: string[] },
-    private itemNameService: CategoryMetadataService
+    public data: { categoryName: CategoryName; items: string[] }
   ) {
     this.categoryName = data.categoryName;
-    this.categoryDisplayName = this.itemNameService.getDisplayName(
+    this.categoryDisplayName = this.categoryNameService.getDisplayName(
       data.categoryName
     );
     const hasExistingItems = data.items.length > 0;

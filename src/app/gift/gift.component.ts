@@ -3,6 +3,10 @@ import { Component, OnDestroy, inject } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
+import {
+  CategoryMetadataService,
+  CategoryName,
+} from '../services/category-metadata';
 import { AppFeature, AppStore } from '../state/app.state';
 
 @Component({
@@ -14,6 +18,8 @@ import { AppFeature, AppStore } from '../state/app.state';
 })
 export class GiftComponent implements OnDestroy {
   store = inject(Store<AppStore>);
+  categoryMetadataService = inject(CategoryMetadataService);
+
   accessories: string[] = [];
   lamps: string[] = [];
   chairs: string[] = [];
@@ -24,6 +30,33 @@ export class GiftComponent implements OnDestroy {
   deskAccessories: string[] = [];
 
   subscription: Subscription;
+
+  get accessoryDisplayName() {
+    return this.categoryMetadataService.getDisplayName(CategoryName.ACCESSORY);
+  }
+  get lampDisplayName() {
+    return this.categoryMetadataService.getDisplayName(CategoryName.LAMP);
+  }
+  get chairDisplayName() {
+    return this.categoryMetadataService.getDisplayName(CategoryName.CHAIR);
+  }
+  get deskDisplayName() {
+    return this.categoryMetadataService.getDisplayName(CategoryName.DESK);
+  }
+  get storageDisplayName() {
+    return this.categoryMetadataService.getDisplayName(CategoryName.STORAGE);
+  }
+  get footRestDisplayName() {
+    return this.categoryMetadataService.getDisplayName(CategoryName.FOOT_REST);
+  }
+  get standDisplayName() {
+    return this.categoryMetadataService.getDisplayName(CategoryName.STAND);
+  }
+  get deskAccessoryDisplayName() {
+    return this.categoryMetadataService.getDisplayName(
+      CategoryName.DESK_ACCESSORY
+    );
+  }
 
   constructor() {
     this.subscription = this.store

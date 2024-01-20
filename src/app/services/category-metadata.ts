@@ -25,7 +25,7 @@ export class CategoryMetadataService {
     [
       CategoryName.ACCESSORY,
       {
-        displayName: 'Accessory',
+        displayName: 'Accessories',
         url: 'https://www.ikea.com.hk/en/products/workspace-accessories',
         variableName: CategoryName.ACCESSORY,
       },
@@ -33,7 +33,7 @@ export class CategoryMetadataService {
     [
       CategoryName.LAMP,
       {
-        displayName: 'Lamp',
+        displayName: 'Lamps',
         url: 'https://www.ikea.com.hk/en/products/workspace-lighting',
         variableName: CategoryName.LAMP,
       },
@@ -41,7 +41,7 @@ export class CategoryMetadataService {
     [
       CategoryName.CHAIR,
       {
-        displayName: 'Chair',
+        displayName: 'Chairs',
         url: 'https://www.ikea.com.hk/en/products/work-chairs',
         variableName: CategoryName.CHAIR,
       },
@@ -49,7 +49,7 @@ export class CategoryMetadataService {
     [
       CategoryName.DESK,
       {
-        displayName: 'Desk',
+        displayName: 'Desks/Snacks',
         url: 'https://www.ikea.com.hk/en/products/work-desks',
         variableName: CategoryName.DESK,
       },
@@ -57,7 +57,7 @@ export class CategoryMetadataService {
     [
       CategoryName.STORAGE,
       {
-        displayName: 'Storage',
+        displayName: 'Storages',
         placeholder: 'ALEX',
         url: 'https://www.ikea.com.hk/en/products/office-storage-furniture',
         variableName: CategoryName.STORAGE,
@@ -66,7 +66,7 @@ export class CategoryMetadataService {
     [
       CategoryName.FOOT_REST,
       {
-        displayName: 'Foot Rest',
+        displayName: 'Foot Rests',
         url: 'https://www.ikea.com.hk/en/search?q=footrest',
         variableName: CategoryName.FOOT_REST,
       },
@@ -74,7 +74,7 @@ export class CategoryMetadataService {
     [
       CategoryName.STAND,
       {
-        displayName: 'Stand',
+        displayName: 'Stands',
         placeholder: 'ELLOVEN',
         url: 'https://www.ikea.com.hk/en/search?q=monitor+stand',
         variableName: CategoryName.STAND,
@@ -83,7 +83,7 @@ export class CategoryMetadataService {
     [
       CategoryName.DESK_ACCESSORY,
       {
-        displayName: 'Desk Accessory',
+        displayName: 'Desk Accessories',
         variableName: CategoryName.DESK_ACCESSORY,
         url: 'https://www.ikea.com.hk/en/products/workspace-accessories/desks-accessories',
       },
